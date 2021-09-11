@@ -13,4 +13,9 @@ public interface TravelAgensiService {
 
     //Method untuk mendapatkan data agensi berdasarkan id agensi
     TravelAgensiModel getAgensiByidAgensi(String idAgensi);
+
+    //Latihan
+    void updateNomorTelepon(TravelAgensiModel travelAgensi, String nomorTelepon);
+
+    void deleteAgensi(TravelAgensiModel agensi);
 }

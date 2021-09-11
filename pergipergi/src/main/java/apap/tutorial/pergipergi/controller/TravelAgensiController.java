@@ -16,7 +16,7 @@ public class TravelAgensiController {
     private TravelAgensiService travelAgensiService;
 
     //Routing URL yang diinginkan
-    @RequestMapping("agensi/add")
+    @RequestMapping("/agensi/add")
     public String addAgensi(
         @RequestParam(value = "idAgensi", required = true) String idAgensi,
         @RequestParam(value = "namaAgensi", required = true) String namaAgensi,
