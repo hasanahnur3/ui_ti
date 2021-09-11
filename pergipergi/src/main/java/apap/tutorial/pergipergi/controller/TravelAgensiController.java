@@ -5,6 +5,7 @@ import apap.tutorial.pergipergi.service.TravelAgensiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -62,5 +63,34 @@ public class TravelAgensiController {
         model.addAttribute("agensi", agensi);
 
         return "view-agensi";
+    }
+
+    //Latihan
+    @RequestMapping("/agensi/update/id-agensi/{idAgensi}/no-telepon/{noTelepon}")
+    public String updateWithPathVariable(
+            @PathVariable(value = "idAgensi", required = true) String idAgensi,
+            @PathVariable(value = "noTelepon", required = true) String noTelepon, Model model ) {
+        TravelAgensiModel agensi = travelAgensiService.getAgensiByidAgensi(idAgensi);
+        if (agensi == null) {
+            return "notfound";
+        }else{
+            travelAgensiService.updateNomorTelepon(agensi, noTelepon);
+            model.addAttribute("agensi", agensi);
+            return "view-updated";
+        }
+    }
+
+    @RequestMapping("/agensi/delete/id-agensi/{idAgensi}")
+    public String deleteWithPathVariable(
+            @PathVariable(value = "idAgensi", required = true) String idAgensi, Model model ) {
+        TravelAgensiModel agensi = travelAgensiService.getAgensiByidAgensi(idAgensi);
+        if (agensi == null) {
+            return "notfound";
+        }else{
+            model.addAttribute("agensi", agensi);
+            travelAgensiService.deleteAgensi(agensi);
+            return "view-deleted";
+        }
+
     }
 }
