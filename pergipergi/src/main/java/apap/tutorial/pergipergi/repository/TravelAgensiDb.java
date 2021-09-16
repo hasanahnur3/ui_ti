@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface TravelAgensiDb extends JpaRepository<TravelAgensiModel,Long> {
-    Optional<TravelAgensiModel> findByNoAgensi(String noAgensi);
+    Optional<TravelAgensiModel> findByNoAgensi(Long noAgensi);
 }

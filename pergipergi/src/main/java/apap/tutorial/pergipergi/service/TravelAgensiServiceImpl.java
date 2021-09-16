@@ -26,7 +26,7 @@ public class TravelAgensiServiceImpl implements TravelAgensiService{
     }
 
     @Override
-    public TravelAgensiModel getAgensiByidAgensi(String noAgensi) {
+    public TravelAgensiModel getAgensiByNoAgensi(Long noAgensi) {
         return travelAgensiDb.findByNoAgensi(noAgensi).get();
     }
 
