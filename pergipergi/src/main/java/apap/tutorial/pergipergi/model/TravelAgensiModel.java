@@ -44,8 +44,8 @@ public class TravelAgensiModel implements Serializable {
     //Relasi dengan DestinasiModel
     @ManyToMany
     @JoinTable(
-            name = "travelagensi_destinasi",
-            joinColumns = @JoinColumn(name = "noAgensi"),
-            inverseJoinColumns = @JoinColumn(name = "noDestinasi"))
+            name = "agensi_destinasi",
+            joinColumns = @JoinColumn(name = "no_agensi"),
+            inverseJoinColumns = @JoinColumn(name = "no_destinasi"))
     List<DestinasiModel> listDestinasi;
 }
