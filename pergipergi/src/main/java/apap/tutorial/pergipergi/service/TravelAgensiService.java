@@ -10,7 +10,7 @@ public interface TravelAgensiService {
 
     List<TravelAgensiModel> getListAgensi();
 
-    TravelAgensiModel getAgensiByidAgensi(String idAgensi);
+    TravelAgensiModel getAgensiByidAgensi(String noAgensi);
 
     TravelAgensiModel updateAgensi(TravelAgensiModel travelAgensi);
 }
