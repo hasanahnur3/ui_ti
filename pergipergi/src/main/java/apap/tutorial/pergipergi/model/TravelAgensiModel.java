@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -36,6 +38,16 @@ public class TravelAgensiModel implements Serializable {
     @Size(max=30)
     @Column(name="no_telepon_agensi", nullable = false)
     private String noTeleponAgensi;
+
+    @NotNull
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime waktuBuka;
+
+    @NotNull
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime waktuTutup;
 
     //Relasi dengan TourGuideModel
     @OneToMany(mappedBy = "agensi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

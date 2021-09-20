@@ -14,11 +14,22 @@
                 <p th:text="'Nama Agensi  : ' + ${agensi.namaAgensi}"></p>
                 <p th:text="'Alamat Agensi: ' + ${agensi.alamatAgensi}"></p>
                 <p th:text="'Nomor Telepon: ' + ${agensi.noTeleponAgensi}"></p>
+                <p th:text="'Waktu Buka: ' + ${agensi.waktuBuka}"></p>
+                <p th:text="'Waktu Tutup: ' + ${agensi.waktuTutup}"></p>
                 <div class="col">
-                    <span class="badge badge-warning" th:each="negaraDestinasi: ${listNegaraDestinasi}" th:text="${negaraDestinasi}"></span>
+                    <br>
+                    <h4>Tour Guide : </h4>
+                    <hr>
+                    <div th:each="guide : ${listTourGuide}">
+                        <p th:text="'Nama : ' + ${guide.namaTourGuide}"></p>
+                        <p th:if="${guide.jenisKelamin == 0}">Jenis Kelamin : Perempuan</p>
+                        <p th:if="${guide.jenisKelamin == 1}">Jenis Kelamin : Laki-laki</p>
+                        <hr>
+                    </div>
                 </div>
                 <br>
-                <a class="btn btn-primary" href="/">Kembali</a>
+                <a class="btn btn-primary" href="/agensi/viewall">Kembali</a>
+                <a class="btn btn-primary" th:href="@{/tour-guide/add/} + ${agensi.noAgensi}">Tambah Guide</a>
             </div>
         </div>
     </div>

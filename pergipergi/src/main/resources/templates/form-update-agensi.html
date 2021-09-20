@@ -8,31 +8,34 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2>Tambah Agensi</h2>
+                <h2>Update Agensi</h2>
                 <br>
-                <form th:action="@{/agensi/add}" th:object="${agensi}" method="POST">
+                <form th:action="@{/agensi/update}" th:object="${agensi}" method="POST">
+
+                    <input type="hidden" th:field="*{noAgensi}" />
+
                     Nama Agensi : <br>
-                    <input class="form-control" type="text" name="namaAgensi"/>
+                    <input class="form-control" type="text" name="namaAgensi" th:value="*{namaAgensi}"/>
                     <br><br>
 
                     Alamat Agensi: <br>
-                    <input class="form-control" type="text" name="alamatAgensi"/>
+                    <input class="form-control" type="text" name="alamatAgensi" th:value="*{alamatAgensi}"/>
                     <br><br>
 
                     Nomor Telepon : <br>
-                    <input class="form-control" type="text" name="noTeleponAgensi"/>
+                    <input class="form-control" type="text" name="noTeleponAgensi" th:value="*{noTeleponAgensi}"/>
                     <br><br>
 
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" />
+                    <input required class="form-control" type="time" name="waktuBuka" th:value="*{waktuBuka}"/>
                     <br><br>
 
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" />
+                    <input required class="form-control" type="time" name="waktuTutup" th:value="*{waktuTutup}"/>
                     <br><br>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
-                    <a class="btn btn-primary" href="/">Home</a>
+                    <a class="btn btn-primary" href="/agensi/viewall">Kembali</a>
                 </form>
             </div>
         </div>

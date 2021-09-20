@@ -9,5 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface DestinasiDb extends JpaRepository<DestinasiModel,Long> {
-    Optional<DestinasiModel> findByNoDestinasi(String noDestinasi);
 }

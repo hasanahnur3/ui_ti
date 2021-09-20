@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +28,9 @@ public class TravelAgensiServiceImpl implements TravelAgensiService{
 
     @Override
     public TravelAgensiModel getAgensiByNoAgensi(Long noAgensi) {
-        return travelAgensiDb.findByNoAgensi(noAgensi).get();
+        Optional<TravelAgensiModel> agensi = travelAgensiDb.findByNoAgensi(noAgensi);
+        if(agensi.isPresent()) return agensi.get();
+        else return null;
     }
 
     @Override

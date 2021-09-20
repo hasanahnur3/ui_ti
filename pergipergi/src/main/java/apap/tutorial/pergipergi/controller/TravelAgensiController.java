@@ -1,5 +1,6 @@
 package apap.tutorial.pergipergi.controller;
 
+import apap.tutorial.pergipergi.model.TourGuideModel;
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
 import apap.tutorial.pergipergi.service.TravelAgensiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,6 @@ public class TravelAgensiController {
     @Autowired
     private TravelAgensiService travelAgensiService;
 
-    @GetMapping("/")
-    private String home(){
-        return "home";
-    }
-
     @GetMapping("/agensi/add")
     public String addAgensiFormPage(Model model){
         model.addAttribute("agensi", new TravelAgensiModel());
@@ -37,6 +33,27 @@ public class TravelAgensiController {
         travelAgensiService.addAgensi(agensi);
         model.addAttribute("noAgensi", agensi.getNoAgensi());
         return "add-agensi";
+    }
+
+    @GetMapping("/agensi/viewall")
+    public String listAgensi(Model model){
+        List<TravelAgensiModel> listAgensi = travelAgensiService.getListAgensi();
+        model.addAttribute("listAgensi", listAgensi);
+        return "viewall-agensi";
+    }
+
+    @GetMapping("/agensi/view")
+    public String viewDetailAgensiPage(
+            @RequestParam(value = "noAgensi") Long noAgensi,
+            Model model
+    ){
+        TravelAgensiModel agensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
+        List<TourGuideModel> listTourGuide = agensi.getListTourGuide();
+
+        model.addAttribute("agensi", agensi);
+        model.addAttribute("listTourGuide", listTourGuide);
+
+        return "view-agensi";
     }
 
     @GetMapping("/agensi/update/{noAgensi}")
@@ -55,28 +72,7 @@ public class TravelAgensiController {
             Model model
     ){
         TravelAgensiModel updatedAgensi = travelAgensiService.updateAgensi(agensi);
-        model.addAttribute("agensi", updatedAgensi);
+        model.addAttribute("noAgensi", updatedAgensi.getNoAgensi());
         return "update-agensi";
     }
-
-    @GetMapping("/agensi/view")
-    public String viewDetailAgensiPage(
-         @RequestParam(value = "noAgensi") Long noAgensi,
-         Model model
-    ){
-        TravelAgensiModel agensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
-        List<String> listNegaraDestinasi = new ArrayList<>();
-        List<String> listNamaTourGuide = new ArrayList<>();
-
-        agensi.getListDestinasi().forEach(p -> listNegaraDestinasi.add(p.getNegaraDestinasi()));
-        agensi.getListTourGuide().forEach(p -> listNamaTourGuide.add(p.getNamaTourGuide()));
-
-        model.addAttribute("agensi", agensi);
-        model.addAttribute("listNegaraDestinasi", listNegaraDestinasi);
-        model.addAttribute("listNamaTourGuide", listNamaTourGuide);
-
-        return "view-agensi";
-    }
-
-
 }

@@ -35,7 +35,7 @@ public class TourGuideModel  implements Serializable {
 
     //Relasi dengan AgensiModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "noAgensi", referencedColumnName = "noAgensi", nullable = false)
+    @JoinColumn(name = "no_agensi", referencedColumnName = "noAgensi", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private TravelAgensiModel agensi;
 }
