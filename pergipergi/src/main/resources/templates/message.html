@@ -7,16 +7,15 @@
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
-            <div class="justify-content-center">
-                <h2>Tambah Agensi</h2>
-                <br>
-                <form th:action="@{/destinasi/add}" th:object="${destinasi}" method="POST">
-                    Negara Destinasi : <br>
-                    <input class="form-control" type="text" name="negaraDestinasi"/>
-                    <br><br>
+            <div>
+                <div class="container">
+                    <div class="alert alert-success" role="alert">
+                        Barang dengan kode barang <b>????</b> berhasil ditambahkan!
+                    </div>
 
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </form>
+                    <hr>
+                    <button class="btn btn-primary mr-4">Home</button>
+                </div>
             </div>
         </div>
     </div>
